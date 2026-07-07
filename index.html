@@ -22,6 +22,24 @@
         </header>
 
         <div class="cards-wrapper">
+            <!-- Full Name Generator Card -->
+            <div class="card glass">
+                <h2><i class="fas fa-id-card"></i> Name</h2>
+                <div class="output-group">
+                    <input type="text" id="name-output" readonly placeholder="Click generate...">
+                    <button id="copy-name" class="icon-btn" title="Copy to Clipboard">
+                        <i class="far fa-copy"></i>
+                    </button>
+                </div>
+                <div class="options">
+                    <label>
+                        <input type="checkbox" id="include-middle-name">
+                        Include Middle Initial
+                    </label>
+                </div>
+                <button id="generate-name" class="primary-btn">Generate Name</button>
+            </div>
+
             <!-- Username Generator Card -->
             <div class="card glass">
                 <h2><i class="fas fa-user-astronaut"></i> Username</h2>

@@ -1,3 +1,37 @@
+// --- Data for Name Generator ---
+const firstNames = [
+    "James", "Mary", "John", "Patricia", "Robert", "Jennifer", "Michael", "Linda",
+    "William", "Elizabeth", "David", "Barbara", "Richard", "Susan", "Joseph", "Jessica",
+    "Thomas", "Sarah", "Charles", "Karen", "Christopher", "Lisa", "Daniel", "Nancy",
+    "Matthew", "Betty", "Anthony", "Margaret", "Mark", "Sandra", "Sovanvichea", "Dara"
+];
+
+const lastNames = [
+    "Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis",
+    "Rodriguez", "Martinez", "Hernandez", "Lopez", "Gonzalez", "Wilson", "Anderson",
+    "Thomas", "Taylor", "Moore", "Jackson", "Martin", "Lee", "Perez", "Thompson",
+    "White", "Harris", "Sanchez", "Clark", "Ramirez", "Lewis", "Robinson"
+];
+
+const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+// --- Logic for Name Generator ---
+function generateName() {
+    const includeMiddleName = document.getElementById('include-middle-name').checked;
+    
+    const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
+    const lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
+    
+    let fullName = `${firstName} ${lastName}`;
+    
+    if (includeMiddleName) {
+        const middleInitial = alphabet[Math.floor(Math.random() * alphabet.length)];
+        fullName = `${firstName} ${middleInitial}. ${lastName}`;
+    }
+    
+    document.getElementById('name-output').value = fullName;
+}
+
 // --- Data for Username Generator ---
 const adjectives = [
     "Brave", "Swift", "Mighty", "Silent", "Clever", "Fierce", "Noble", "Shadow", 
@@ -110,6 +144,7 @@ function showToast(message, isError = false) {
 // --- Event Listeners ---
 document.addEventListener('DOMContentLoaded', () => {
     // Initial generation
+    generateName();
     generateUsername();
     generatePassword();
 
@@ -121,9 +156,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Buttons
+    document.getElementById('generate-name').addEventListener('click', generateName);
     document.getElementById('generate-username').addEventListener('click', generateUsername);
     document.getElementById('generate-password').addEventListener('click', generatePassword);
     
+    document.getElementById('copy-name').addEventListener('click', () => copyToClipboard('name-output'));
     document.getElementById('copy-username').addEventListener('click', () => copyToClipboard('username-output'));
     document.getElementById('copy-password').addEventListener('click', () => copyToClipboard('password-output'));
 });
