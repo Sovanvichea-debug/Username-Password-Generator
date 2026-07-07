@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Identity Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="background-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>Identity Generator</h1>
+            <p>Generate unique usernames and strong passwords instantly.</p>
+        </header>
+
+        <div class="cards-wrapper">
+            <!-- Username Generator Card -->
+            <div class="card glass">
+                <h2><i class="fas fa-user-astronaut"></i> Username</h2>
+                <div class="output-group">
+                    <input type="text" id="username-output" readonly placeholder="Click generate...">
+                    <button id="copy-username" class="icon-btn" title="Copy to Clipboard">
+                        <i class="far fa-copy"></i>
+                    </button>
+                </div>
+                <div class="options">
+                    <label>
+                        <input type="checkbox" id="include-numbers" checked>
+                        Include Numbers
+                    </label>
+                    <label>
+                        <input type="checkbox" id="include-special">
+                        Include Special Chars
+                    </label>
+                </div>
+                <button id="generate-username" class="primary-btn">Generate Username</button>
+            </div>
+
+            <!-- Password Generator Card -->
+            <div class="card glass">
+                <h2><i class="fas fa-lock"></i> Password</h2>
+                <div class="output-group">
+                    <input type="text" id="password-output" readonly placeholder="Click generate...">
+                    <button id="copy-password" class="icon-btn" title="Copy to Clipboard">
+                        <i class="far fa-copy"></i>
+                    </button>
+                </div>
+                
+                <div class="options password-options">
+                    <div class="range-group">
+                        <label for="password-length">Length: <span id="length-val">16</span></label>
+                        <input type="range" id="password-length" min="8" max="64" value="16">
+                    </div>
+                    <div class="checkbox-grid">
+                        <label>
+                            <input type="checkbox" id="pwd-upper" checked> Uppercase
+                        </label>
+                        <label>
+                            <input type="checkbox" id="pwd-lower" checked> Lowercase
+                        </label>
+                        <label>
+                            <input type="checkbox" id="pwd-numbers" checked> Numbers
+                        </label>
+                        <label>
+                            <input type="checkbox" id="pwd-symbols" checked> Symbols
+                        </label>
+                    </div>
+                </div>
+                <button id="generate-password" class="primary-btn">Generate Password</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast">Copied to clipboard!</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
