@@ -1,23 +1,38 @@
 // --- Data for Name Generator ---
-const firstNames = [
-    "James", "Mary", "John", "Patricia", "Robert", "Jennifer", "Michael", "Linda",
-    "William", "Elizabeth", "David", "Barbara", "Richard", "Susan", "Joseph", "Jessica",
-    "Thomas", "Sarah", "Charles", "Karen", "Christopher", "Lisa", "Daniel", "Nancy",
-    "Matthew", "Betty", "Anthony", "Margaret", "Mark", "Sandra", "Sovanvichea", "Dara"
-];
-
-const lastNames = [
-    "Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis",
-    "Rodriguez", "Martinez", "Hernandez", "Lopez", "Gonzalez", "Wilson", "Anderson",
-    "Thomas", "Taylor", "Moore", "Jackson", "Martin", "Lee", "Perez", "Thompson",
-    "White", "Harris", "Sanchez", "Clark", "Ramirez", "Lewis", "Robinson"
-];
+const nameData = {
+    "USA": {
+        firstNames: [
+            "James", "Mary", "John", "Patricia", "Robert", "Jennifer", "Michael", "Linda",
+            "William", "Elizabeth", "David", "Barbara", "Richard", "Susan", "Joseph", "Jessica"
+        ],
+        lastNames: [
+            "Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis",
+            "Rodriguez", "Martinez", "Hernandez", "Lopez", "Gonzalez", "Wilson", "Anderson"
+        ]
+    },
+    "Cambodia": {
+        firstNames: ["Sovanvichea", "Dara", "Sok", "Chea", "Bopha", "Malis", "Piseth", "Vibol", "Chan", "Kagna", "Vannak", "Sovann"],
+        lastNames: ["Seng", "Keo", "Chan", "Sok", "Meas", "Chea", "Yim", "Ouk", "Ros", "Mao", "Pich", "Phan"]
+    },
+    "Japan": {
+        firstNames: ["Kenji", "Hiroshi", "Yuki", "Sakura", "Hina", "Yui", "Haruto", "Sota", "Yuto", "Ren", "Aoi", "Hana"],
+        lastNames: ["Sato", "Suzuki", "Takahashi", "Tanaka", "Watanabe", "Ito", "Yamamoto", "Nakamura", "Kobayashi", "Kato"]
+    },
+    "France": {
+        firstNames: ["Lucas", "Hugo", "Leo", "Gabriel", "Jade", "Louise", "Emma", "Alice", "Chloé", "Lina", "Arthur", "Jules"],
+        lastNames: ["Martin", "Bernard", "Thomas", "Petit", "Robert", "Richard", "Durand", "Dubois", "Moreau", "Laurent"]
+    }
+};
 
 const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 // --- Logic for Name Generator ---
 function generateName() {
     const includeMiddleName = document.getElementById('include-middle-name').checked;
+    const country = document.getElementById('name-country').value;
+    
+    const firstNames = nameData[country].firstNames;
+    const lastNames = nameData[country].lastNames;
     
     const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
     const lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
